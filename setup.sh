@@ -31,10 +31,12 @@ echo "Waiting for kubelet to see the change and API server to crash"
 
 # Have seen behaviour where the kubelet does NOT replace the API server if the manifest is dodgy,
 # so force a stop and restart
-mv /etc/kubernetes/manifests/kube-apiserver.yaml /etc/kubernetes
+mv /etc/kubernetes/manifests/kube-apiserver.yaml /etc/kubernetes/kube-apiserver.yaml
+sleep 1
+rm -f /etc/kubernetes/manifests/kube-apiserver.*
 systemctl restart kubelet
 while crictl ps | grep apiserver > /dev/null ; do sleep 0.25s ; done
-mv /etc/kubernetes/kube-apiserver.yaml /etc/kubernetes/manifests
+mv /etc/kubernetes/kube-apiserver.yaml /etc/kubernetes/manifests/kube-apiserver.yaml
 kubectl get pods -n kube-system
 echo
 echo "The scene is set!"
