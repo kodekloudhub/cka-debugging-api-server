@@ -45,7 +45,7 @@ Let's fix that. You should be on the controlplane node for the cluster. If you a
     <details>
     <summary>Reveal issue</summary>
 
-    Did you notice that the cursor jumps two spaces at one point? This is because there is a `TAB` character in there. YAML hates tabs! Edit the line to delete the tab and re-indent using spaces.
+    Did you notice that the cursor jumps two spaces at one point? This is because there are `TAB` characters in there. YAML hates tabs! Edit the line to delete the tab and re-indent using spaces.
     </details>
     </details>
 
