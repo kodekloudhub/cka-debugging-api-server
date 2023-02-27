@@ -8,7 +8,9 @@ then
     exit 1
 fi
 
-if [ ! -d "./scenarios/scenario-$1" ]
+basedir=$(dirname "${BASH_SOURCE[0]}")
+
+if [ ! -d "$basedir/scenarios/scenario-$1" ]
 then
     echo "No scenario $1 found."
     exit 1
@@ -23,7 +25,7 @@ fi
 
 echo "Setting up scenario $1 and crashing that API server!"
 
-source ./scenarios/scenario-$1/setup.sh
+source $basedir/scenarios/scenario-$1/setup.sh
 
 echo "Waiting for kubelet to see the change and API server to crash"
 systemctl restart kubelet
