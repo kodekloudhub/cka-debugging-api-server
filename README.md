@@ -19,7 +19,9 @@ The general technique for what you need to do is discussed on [this page](https:
     ./cka-debugging-api-server/setup.sh 1
     ```
 
-    Solve it
+    It may take up to a minute before the API server crashes.
+
+    Now solve it!
 
     ```
     ./cka-debugging-api-server/setup.sh 2
