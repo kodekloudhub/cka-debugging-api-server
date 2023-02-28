@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# todo - update for tab in policy
-
 mkdir -p /etc/kubernetes/audit
 
 cat <<EOF > /etc/kubernetes/prod-audit.yaml
