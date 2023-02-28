@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Perform restore if we have a backup, else make a backup
+[ -f /etc/kubernetes/kube-apiserver.bak ] && cp /etc/kubernetes/kube-apiserver.bak /etc/kubernetes/manifests/kube-apiserver.yaml
+[ ! -f /etc/kubernetes/kube-apiserver.bak ] && cp /etc/kubernetes/manifests/kube-apiserver.yaml /etc/kubernetes/kube-apiserver.bak
+
 if [ "$1" = "" ]
 then
     echo "Usage: setup <scenario>"

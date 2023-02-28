@@ -13,7 +13,7 @@ The general technique for what you need to do is discussed on [this page](https:
     git clone https://github.com/kodekloudhub/cka-debugging-api-server.git
     ```
 
-1. Run each scenario in turn, and solve them. Don't look at the setup scripts and solutions in the `scenarios` directory unless you are stuck! You must solve each one and get things running before trying another, or the API server will be completely broken and you'll have to reset the lab. You can actually do them in any order, as long as you follow the advice in the previous sentence.
+1. Run each scenario in turn, and solve them. Don't look at the setup scripts and solutions in the `scenarios` directory unless you are stuck! You can do them in any order.
 
     ```
     ./cka-debugging-api-server/setup.sh 1
