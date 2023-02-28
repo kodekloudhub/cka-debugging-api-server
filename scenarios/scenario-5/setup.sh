@@ -29,7 +29,7 @@ yq -i e '.spec.containers[0].command += [
 
 echo
 echo "Hint"
-echo "This scenario is configuring APi server auditing. This involves:"
+echo "This scenario is configuring API server auditing. This involves:"
 echo
 echo "* A file /etc/kubernetes/prod-audit.yaml has been created."
 echo "* This file should be correctly mounted as a volume by API server."
