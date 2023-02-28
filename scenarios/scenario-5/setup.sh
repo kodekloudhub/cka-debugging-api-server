@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-mkdir -p /etc/kubernetes/audit
-
 cat <<EOF > /etc/kubernetes/prod-audit.yaml
 apiVersion: audit.k8s.io/v1
 kind: Policy
