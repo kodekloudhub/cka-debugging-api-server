@@ -30,3 +30,12 @@ The general technique for what you need to do is discussed on [this page](https:
     ```
     ./cka-debugging-api-server/setup.sh 6
     ```
+1. When you think you have completed a resolution, run the following to speed up reloading of API server, then check it's working.
+
+    ```bash
+    systemctl restart kubelet
+    # Wait 10 seconds or so, then
+    kubectl get pods -n kube-system
+    ```
+
+    If you fixed it, then pods will be listed. If you are still getting an error, redo the [debugging process](https://github.com/kodekloudhub/community-faq/blob/main/docs/diagnose-crashed-apiserver.md) until you have fixed it.
