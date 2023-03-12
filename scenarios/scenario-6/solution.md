@@ -36,7 +36,52 @@ Let's fix that. You should be on the controlplane node for the cluster. If you a
 
     So API server probably _is_ working, but something it is talking to probably _isn't_ and that is destabilizing it.
 
-    Which component does API server use to track the state of objects in the cluster?
+1.  Let's check the pod logs
+
+    ```
+    cd /var/log/pods
+    ls -ld *apiserver*
+    ```
+
+    This should return something like
+
+    ```
+    drwxr-xr-x 3 root root 4096 Oct 26 04:29 kube-system_kube-apiserver-controlplane_02d13ddeddf8e935ec2407132767aeaa
+    ```
+
+    If there's more than one match, choose the one with the most recent timestamp.
+
+    **NOTE**: This directory can change name frequently. If you have to repeat the diagnostic process, don't assume it is the same as last time you did this in the same session. Repeat this step from the top.
+
+    Next, `cd` into the given directory
+
+    ```
+    cd kube-system_kube-apiserver-controlplane_02d13ddeddf8e935ec2407132767aeaa
+    ls -l
+    ```
+
+    You should see
+
+    ```
+    drwxr-xr-x 2 root root 4096 Oct 26 04:29 kube-apiserver
+    ```
+
+    ```
+    cd kube-api-server
+    ls -l
+    ```
+
+    There will be one or more `.log` files. Examine the content of the most recent log, e.g.
+
+    ```
+    cat 1.log
+    ```
+
+    ```
+    2023-03-12T09:09:10.187397145Z stderr F W0312 09:09:10.187255       1 clientconn.go:1331] [core] grpc: addrConn.createTransport failed to connect to {127.0.0.1:2379 127.0.0.1 <nil> 0 <nil>}. Err: connection error: desc = "transport: Error while dialing dial tcp 127.0.0.1:2379: connect: connection refused". Reconnecting...
+    ```
+
+    What listens on prot `2379`?
 
     <details>
     <summary>Reveal</summary>
@@ -60,6 +105,8 @@ Let's fix that. You should be on the controlplane node for the cluster. If you a
     * `kube-apiserver` is coming and going
 
     </details>
+
+
 
     <details>
     <summary>Let's fix this!</summary>
