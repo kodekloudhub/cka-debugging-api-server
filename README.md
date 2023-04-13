@@ -6,7 +6,7 @@ The general technique for what you need to do is discussed on [this page](https:
 
 ## Running the scenarios
 
-1. Start a Kubernetes playground
+1. Start a Kubernetes playground, or any CKA/CKAD/CKS lab (just ignore the questions)
 1. Clone this repo
 
     ```
