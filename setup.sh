@@ -24,7 +24,8 @@ if ! command -v yq > /dev/null
 then
     # Install YQ for patching YAML if not present
     curl -LO https://github.com/mikefarah/yq/releases/download/v4.31.1/yq_linux_amd64
-    mv yq_linux_amd64 /usr/local/bin
+    chmod 755 yq_linux_amd64
+    mv yq_linux_amd64 /usr/local/bin/yq
 fi
 
 echo "Setting up scenario $1 and crashing that API server!"
